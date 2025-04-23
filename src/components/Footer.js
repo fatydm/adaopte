@@ -39,9 +39,9 @@ export default function Navbar() {
                         <p>Tél: +33 1 23 45 67 89</p>
                     </article>
                 </div>
-                <hr />
+
                 <div className={styles.divP}>
-                    <p> © Adaopte. Tous droits réservés.</p>
+                    <p> © 2025 Adaopte. Tous droits réservés.</p>
                     <p>Ce site est développé dans le cadre d'un projet ADA Tech School.</p>
                 </div>
             </div>
