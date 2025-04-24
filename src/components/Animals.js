@@ -35,6 +35,8 @@ export default function Animals() {
                         <img className={styles.img} src="./assets/peri-stojnic-5Vr_RVPfbMI-unsplash.jpg"></img>
                     </div>
                 </div>
+                
+                <button className={styles.button}>Voir tous les animaux</button>
             </main>
 
 
