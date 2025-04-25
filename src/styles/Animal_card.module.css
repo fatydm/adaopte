@@ -1,0 +1,40 @@
+.containerGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .animalCard {
+        border-radius: 8px;
+        margin: 20px;
+        width: 20%;
+        height: auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        line-height: 1.5;
+        & img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: 50% 40%;
+            border-radius: 8px;
+        }
+        .animalDivText{
+            padding: 15px;
+            .animalCardTitle{
+                color: #7a78ff;
+                text-align: center;
+                font-weight: 700;
+                font-size: 1.2rem;
+            }
+            .animalStylePara{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .animalCardDescription{
+            margin-top: 10px;
+            }
+        }
+        
+    }
+}
