@@ -1,8 +1,9 @@
-.questionContainer{
+.questionContainer {
     display: flex;
     flex-direction: column;
     align-content: center;
     background-color: rgb(247, 245, 245);
+
     .title {
         font-family: 'Amatic SC', cursive;
         font-size: 1.8rem;
@@ -11,18 +12,21 @@
         text-align: center;
         padding: 30px;
     }
+
     .paragraphe {
         font-family: 'Roboto' sans-serif;
         text-align: center;
         margin-bottom: 20px;
     }
 }
- .buttonStyle {
+
+.buttonStyle {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 15px;
     margin-bottom: 50px;
+
     .button {
         font-size: 'Roboto' sans-serif;
         font-weight: 700;
@@ -37,9 +41,25 @@
         width: 25%;
         cursor: pointer;
     }
+
+    .button:hover {
+        background-color: #8d8c8c;
+        border: 2px solid black;
+    }
+
     .red {
         background-color: #e74c3c;
     }
+    .red:hover{
+        background-color: red;
+        border: 2px solid black;
+    }
+
     .green {
-        background-color: #00a652;}
+        background-color: #00a652;
+    }
+    .green:hover{
+        background-color: green;
+        border: 2px solid black;
+    }
 }
