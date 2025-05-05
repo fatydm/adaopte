@@ -9,11 +9,11 @@ export default function Adopt() {
         <title>Adoptez un compagnon de vie</title>
       </Head>
 
-      <section class="sectionSearchBar">
+      <section className="sectionSearchBar">
         <Searchbar />
       </section>
 
-      <section class="sectionAnimalGrid">
+      <section className="sectionAnimalGrid">
         <AnimalGrid />
       </section>
 
