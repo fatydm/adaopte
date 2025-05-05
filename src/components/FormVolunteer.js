@@ -12,35 +12,35 @@ export default function FormVolunteer() {
                     <form className={styles.formStyle}>
                         <div>
                             <li>
-                                <label for="firstname">Prénom <span>*</span> </label>
+                                <label forhtml="firstname">Prénom <span>*</span> </label>
                                 <input type="text" id="firstname" name="user_firstname" required placeholder="Votre prénom" />
                             </li>
                             <li>
-                                <label for="surname">Nom <span>*</span></label>
+                                <label forhtml="surname">Nom <span>*</span></label>
                                 <input type="text" id="surname" name="user_surname" required placeholder="Votre nom" />
                             </li>
                         </div>
 
                         <div>
                             <li>
-                                <label for="mail">Adresse email&nbsp; <span>*</span></label>
+                                <label forhtml="mail">Adresse email&nbsp; <span>*</span></label>
                                 <input type="email" id="mail" name="user_mail" required placeholder="Votre email" />
                             </li>
                         </div>
 
                         <div>
                             <li>
-                                <label for="firstname">Ville <span>*</span> </label>
+                                <label forhtml="firstname">Ville <span>*</span> </label>
                                 <input type="text" id="firstname" name="user_firstname" required placeholder="Votre ville" />
                             </li>
                             <li>
-                                <label for="firstname">Code postal <span>*</span> </label>
+                                <label forhtml="firstname">Code postal <span>*</span> </label>
                                 <input type="text" id="firstname" name="user_firstname" required placeholder="Code postal" />
                             </li>
                         </div>
                         <div>
                             <li>
-                                <label for="firstname">Disponibilités <span>*</span> </label>
+                                <label forhtml="firstname">Disponibilités <span>*</span> </label>
                                 <input
 
                                     type="date"
@@ -54,7 +54,7 @@ export default function FormVolunteer() {
 
                         <div>
                             <li>
-                                <label for="msg">Votre motivation <span>*</span></label>
+                                <label forhtml="msg">Votre motivation <span>*</span></label>
                                 <textarea id="msg" name="user_message" placeholder="Parlez-nous de votre motivation à devenir bénévole chez Adaopte..."></textarea>
                             </li>
                         </div>
