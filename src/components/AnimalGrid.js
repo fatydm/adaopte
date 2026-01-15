@@ -1,37 +1,95 @@
 'use client'
 
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import data from "../data/data_animals.json";
 import AnimalCard from "@/components/AnimalCard";
-import { useSearchParams } from 'next/navigation';
 import styles from "../styles/Animal_card.module.css";
+
+const ITEMS_PER_PAGE = 8;
 
 export default function AnimalsGrid() {
     const searchParams = useSearchParams();
+
     const type = searchParams.get("type") || "";
     const ville = searchParams.get("ville") || "";
-    console.log(type)
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // 🔁 Reset page quand on change de filtre
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [type, ville]);
 
     const filteredData = data.filter((animal) => {
-        const matchType = animal.type.toLowerCase() === type || type === '';
-        const matchVille = animal.city.toLowerCase() === ville || ville === '';
-        return matchType && matchVille
-    })
+        const matchType =
+            animal.type.toLowerCase() === type.toLowerCase() || type === "";
+
+        const matchVille =
+            animal.city.toLowerCase() === ville.toLowerCase() || ville === "";
+
+        return matchType && matchVille;
+    });
+
+    const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const paginatedData = filteredData.slice(
+        startIndex,
+        startIndex + ITEMS_PER_PAGE
+    );
 
     return (
-        <div className={styles.containerGrid}>
-            {filteredData.map((animal, index) => (
-                <AnimalCard
-                    key={index}
-                    index={index}
-                    type={animal.type}
-                    name={animal.name}
-                    imageUrl={animal.imageUrl}
-                    race={animal.breed}
-                    age={animal.age}
-                    localisation={animal.city}
-                    description={animal.description}
-                />
-            ))}
-        </div>
+        <>
+            {/* 🐾 Grille */}
+            <div className={styles.containerGrid}>
+                {paginatedData.map((animal, index) => (
+                    <AnimalCard
+                        key={index}
+                        index={index}
+                        type={animal.type}
+                        name={animal.name}
+                        imageUrl={animal.imageUrl}
+                        race={animal.breed}
+                        age={animal.age}
+                        localisation={animal.city}
+                        description={animal.description}
+                    />
+                ))}
+            </div>
+
+            {/* 📄 Pagination */}
+            {totalPages > 1 && (
+                <div className={styles.pagination}>
+                    <button
+                        onClick={() => setCurrentPage((p) => p - 1)}
+                        disabled={currentPage === 1}
+                    >
+                        ◀ Précédent
+                    </button>
+
+                    {[...Array(totalPages)].map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentPage(index + 1)}
+                            className={
+                                currentPage === index + 1
+                                    ? styles.activePage
+                                    : ""
+                            }
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
+
+                    <button
+                        onClick={() => setCurrentPage((p) => p + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        Suivant ▶
+                    </button>
+                </div>
+            )}
+        </>
     );
 }

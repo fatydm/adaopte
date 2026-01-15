@@ -1,86 +1,120 @@
+
 'use client'
-import { useRouter } from 'next/navigation'
+
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import styles from "../styles/Searchbar.module.css"
+import data from "../data/data_animals.json";
 
 export default function Searchbar() {
-    // pour qu'au clic, ça me renvoie sur la page "J'adopte"
-    const router = useRouter()
+    const router = useRouter();
+    const searchParams = useSearchParams();
 
+    // États
+    const [animal, setAnimal] = useState('');
+    const [ville, setVille] = useState('');
+    const [animalCount, setAnimalCount] = useState(0);
+    const [hasSearched, setHasSearched] = useState(false);
+
+    // Récupération du type depuis l'URL (utile si on arrive via lien)
+    const typeFromUrl = searchParams.get("type") || "";
+
+    // Filtrage des données
+    const filteredData = data.filter((animalItem) => {
+        const matchType =
+            animalItem.type.toLowerCase() === (animal || typeFromUrl).toLowerCase() ||
+            (animal === "" && typeFromUrl === "");
+
+        const matchVille =
+            animalItem.city.toLowerCase() === ville.toLowerCase() || ville === "";
+
+        return matchType && matchVille;
+    });
+
+    // Soumission de la recherche
     const submit = () => {
-
         const query = new URLSearchParams();
+
         if (animal) query.append('type', animal);
         if (ville) query.append('ville', ville);
 
         router.push(`/adopt?${query.toString()}`);
-    }
 
-    // Modifie l'état aprés le choix du use
-    const [animal, setAnimal] = useState('');
-    const handleChange = (e) => {
-        setAnimal(e.target.value);
+        setAnimalCount(filteredData.length);
+        setHasSearched(true);
     };
 
-    const [ville, setVille] = useState('');
-
-    // Pour reset au clic
-    const [showAllImages, setShowAllImages] = useState(false);
+    // Reset filtres
     const resetFilters = () => {
-        setShowAllImages(false); 
-      };
-    
-    const [animalCount, setAnimalCount] = useState(undefined)
-    // const animalCountText = () => {
-    //     setAnimalCount("10")
-    //     console.log(setAnimalCount());
-    // };
-
-    const foundText = animal.length
-    console.log(foundText);
-    
+        setAnimal('');
+        setVille('');
+        setAnimalCount(0);
+        setHasSearched(false);
+        router.push('/adopt');
+    };
 
     return (
-        <>
-            <div className={styles.search}>
-                <div className={styles.container}>
-                    <div className={styles.petType}>
-                        <label htmlFor="pet-select">Type d'animal</label>
+        <div className={styles.search}>
+            <div className={styles.container}>
 
-                        <select name="pets" id="pet-select"
-                            className={styles.petSelect}
-                            onChange={handleChange}
-                            value={animal}>
-                            <option value="">--Choisis un animal--</option>
-                            <option value="chien">Chien</option>
-                            <option value="chat">Chat</option>
-                            <option value="lapin">Lapin</option>
-                            <option value="hamster">Hamster</option>
-                            <option value="cochon-d'inde">Cochon d'Inde</option>
-                        </select>
-                    </div>
-
-                    <div className={styles.localization}>
-                        <label htmlFor="search">Localisation</label>
-                        <input className={styles.caseville}
-                            type="search"
-                            placeholder="Votre ville"
-                            value={ville}
-                            onChange={(e) => setVille(e.target.value)} />
-                    </div>
-
-                    <button onClick={() => { submit() }} className={styles.button}>Rechercher 🔎</button>
-
+                {/* Type d'animal */}
+                <div className={styles.petType}>
+                    <label htmlFor="pet-select">Type d'animal</label>
+                    <select
+                        id="pet-select"
+                        className={styles.petSelect}
+                        onChange={(e) => setAnimal(e.target.value)}
+                        value={animal}
+                    >
+                        <option value="">-- Choisis un animal --</option>
+                        <option value="chien">Chien</option>
+                        <option value="chat">Chat</option>
+                        <option value="lapin">Lapin</option>
+                        <option value="hamster">Hamster</option>
+                        <option value="cochon-d'inde">Cochon d'Inde</option>
+                    </select>
                 </div>
 
-                {animal ?
-                    <div className={styles.reset}>
-                        <p className={styles.foundText}> animaux trouvés</p>
-                        <p onClick={() => resetFilters()} className={styles.resetFunction}>Réinitialiser les filtres</p>
-                    </div>
-                    : ""}
+                {/* Ville */}
+                <div className={styles.localization}>
+                    <label htmlFor="search">Localisation</label>
+                    <input
+                        className={styles.caseville}
+                        type="search"
+                        placeholder="Votre ville"
+                        value={ville}
+                        onChange={(e) => setVille(e.target.value)}
+                    />
+                </div>
 
+                {/* Bouton */}
+                <button
+                    onClick={submit}
+                    className={styles.button}
+                >
+                    Rechercher 🔎
+                </button>
             </div>
-        </>
-    )
+
+            {/* Résultats + reset */}
+            <div className={styles.reset}>
+
+                {/* Texte dynamique */}
+                {hasSearched && (
+                    <p className={styles.foundText}>
+                        {animalCount === 0 && "Aucun animal trouvé 😿"}
+                        {animalCount === 1 && "1 animal trouvé 🐾"}
+                        {animalCount > 1 && `${animalCount} animaux trouvés 🐾`}
+                    </p>
+                )}
+
+                <p
+                    onClick={resetFilters}
+                    className={styles.resetFunction}
+                >
+                    Réinitialiser les filtres
+                </p>
+            </div>
+        </div>
+    );
 }

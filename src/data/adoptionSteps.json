@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "🔎",
+        "title": "1. Trouvez votre compagnon",
+       "text": "Parcourez notre base de données d'animaux disponibles et utilisez nos filtres pour trouver celui qui correspond à votre mode de vie."
+    },
+    {
+        "icon": "📝",
+        "title": "2. Remplissez une demande",
+       "text": "Soumettez votre formulaire d'adoption pour l'animal qui vous intéresse. Nous examinons chaque demande avec soin."
+    },
+    {
+        "icon": "👋🏾",
+        "title": "3. Rencontrez l'animal",
+       "text": "Visitez le refuge pour rencontrer l'animal et voir si vous êtes compatibles."
+    },
+    {
+        "icon": "🏠",
+        "title": "4. Bienvenue à la maison",
+       "text": "Une fois votre demande approuvée, vous pouvez accueillir votre nouvel ami chez vous."
+    }
+]

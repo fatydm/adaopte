@@ -8,6 +8,7 @@
   --light-color: #f9f9f9;
   --dark-color: #333;
 
+
   --btn-primary-bg: #333;
   --btn-secondary-bg: #e74c3c;
   --btn-accent-bg: #00a652;
@@ -43,3 +44,4 @@ body {
     margin-top: -15px;
   }
 }
+

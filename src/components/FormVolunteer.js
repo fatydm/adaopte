@@ -46,7 +46,7 @@ export default function FormVolunteer() {
                                     type="date"
                                     id="start"
                                     name="trip-start"
-                                    value="2025-04-28"
+                                    defaultValue="Choisis une date"
                                     min="2025-01-01"
                                     max="2099-12-31" required />
                             </li>
