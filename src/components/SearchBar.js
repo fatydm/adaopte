@@ -1,29 +1,34 @@
 
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import styles from "../styles/Searchbar.module.css"
-import data from "../data/data_animals.json";
+import data from "../data/data_animals.json"
 
 export default function Searchbar() {
     const router = useRouter();
-    const searchParams = useSearchParams();
 
     // États
     const [animal, setAnimal] = useState('');
     const [ville, setVille] = useState('');
     const [animalCount, setAnimalCount] = useState(0);
     const [hasSearched, setHasSearched] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
-    // Récupération du type depuis l'URL (utile si on arrive via lien)
-    const typeFromUrl = searchParams.get("type") || "";
+    // Lire les paramètres URL
+    useEffect(() => {
+        setMounted(true);
+        const params = new URLSearchParams(window.location.search);
+        setAnimal(params.get("type") || "");
+        setVille(params.get("ville") || "");
+    }, []);
 
     // Filtrage des données
     const filteredData = data.filter((animalItem) => {
         const matchType =
-            animalItem.type.toLowerCase() === (animal || typeFromUrl).toLowerCase() ||
-            (animal === "" && typeFromUrl === "");
+            animalItem.type.toLowerCase() === animal.toLowerCase() ||
+            animal === "";
 
         const matchVille =
             animalItem.city.toLowerCase() === ville.toLowerCase() || ville === "";
@@ -34,14 +39,14 @@ export default function Searchbar() {
     // Soumission de la recherche
     const submit = () => {
         const query = new URLSearchParams();
-
         if (animal) query.append('type', animal);
         if (ville) query.append('ville', ville);
-
-        router.push(`/adopt?${query.toString()}`);
-
+        
         setAnimalCount(filteredData.length);
         setHasSearched(true);
+        
+        // Utiliser window.location pour forcer le rafraîchissement
+        window.location.href = `/adopt?${query.toString()}`;
     };
 
     // Reset filtres
@@ -50,8 +55,14 @@ export default function Searchbar() {
         setVille('');
         setAnimalCount(0);
         setHasSearched(false);
-        router.push('/adopt');
+        
+        // Utiliser window.location pour forcer le rafraîchissement
+        window.location.href = '/adopt';
     };
+
+    if (!mounted) {
+        return <div className={styles.search}>Chargement...</div>;
+    }
 
     return (
         <div className={styles.search}>

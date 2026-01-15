@@ -13,6 +13,7 @@ const amatic = Amatic_SC({
 })
 
 import { Roboto } from 'next/font/google'
+import CallToAction from "@/components/CallToAction"
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '700']
@@ -56,13 +57,26 @@ export default function Volunteer() {
           steps={volunteerSteps}
       />
       
+      <CallToAction 
+            title="Des questions ?"
+            description={
+                <>
+                    Nous sommes là pour répondre à toutes vos interrogations concernant
+                    le bénévolat chez Adaopte. <br/>
+                    N'hésitez pas à nous contacter pour en savoir plus sur notre démarche.
+                </>
+            }
+            buttons={[
+                { label: "Foire aux questions", href: "/faq" },
+                { label: "Contactez-nous", href: "/contact", color: "red" }
+            ]}
+        />
+
       <Testimonials 
         title="Témoignages de bénévoles"
         description="Découvrez ce que nos bénévoles partagent de leur expérience avec Adaopte."
         testimonials={volunteerTestimonials}
       />
-
-
     </>
   )
 }

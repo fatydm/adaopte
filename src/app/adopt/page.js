@@ -1,6 +1,8 @@
 import Head from "next/head"
 import Searchbar from "@/components/SearchBar"
-import AnimalGrid from "@/components/AnimalGrid"
+import AnimalsGridContent from "@/components/AnimalGridContent"
+
+export const dynamic = "force-dynamic"
 
 export default function Adopt() {
   return (
@@ -10,13 +12,12 @@ export default function Adopt() {
       </Head>
 
       <section className="sectionSearchBar">
-        <Searchbar />
+        <Searchbar/>
       </section>
 
       <section className="sectionAnimalGrid">
-        <AnimalGrid />
+        <AnimalsGridContent/>
       </section>
-
     </>
   )
 }

@@ -1,21 +1,30 @@
 .containerGrid {
+    margin: 30px;
     display: grid;
+    border: solid 2px var(--secondary-color);
+    border-radius: 20px;
     grid-template-columns: repeat(4, 1fr);
-    
 
     .animalCard {
-        border-radius: 8px;
-        margin: 20px;
-        height: auto;
-         
-        line-height: 1.5;
-        & img{
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            object-position: 50% 40%;
-            border-radius: 8px;
-        }
+    border-radius: 8px;
+    border: solid 3px var(--secondary-color);
+    background-color: rgb(235, 156, 114);
+    margin: 20px;
+    height: auto;
+    line-height: 1.5;
+    overflow: hidden;
+    
+    & img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover; 
+        object-position: 50% 30%; 
+        border-radius: 8px 8px 0 0;
+        border: none; 
+        display: block;
+    }
+
+        
         .animalDivText{
             padding: 15px;
             .animalCardTitle{
