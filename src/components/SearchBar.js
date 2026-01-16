@@ -68,7 +68,6 @@ export default function Searchbar() {
         <div className={styles.search}>
             <div className={styles.container}>
 
-                {/* Type d'animal */}
                 <div className={styles.petType}>
                     <label htmlFor="pet-select">Type d'animal</label>
                     <select
