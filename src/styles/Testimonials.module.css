@@ -57,5 +57,48 @@
             font-weight: 700;
         }
     }
+}
 
+/* TABLETTE */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .testimonialsContainer .testimonyDiv {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .testimonialsContainer .testimonyDiv .testimonyInfos img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .testimonialsContainer .title {
+        font-size: 1.6rem;
+        padding: 25px;
+    }
+
+    .testimonialsContainer .paragraphe {
+        font-size: 1rem;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .testimonialsContainer .testimonyDiv {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .testimonialsContainer .title {
+        font-size: 1.4rem;
+        padding: 20px 10px;
+    }
+
+    .testimonialsContainer .paragraphe {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .testimonialsContainer .testimonyDiv .testimonyParagraphe {
+        font-size: 0.85rem;
+    }
 }
