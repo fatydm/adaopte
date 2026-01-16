@@ -53,3 +53,55 @@
         }
     }
 }
+
+/* TABLETTE */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .container .articleFlex {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .container .articleFlex .article {
+        width: 100%; /* prend toute la cellule */
+    }
+
+    .container .title {
+        font-size: 1.6rem;
+    }
+
+    .container .paragraphe {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .container .articleFlex {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .container .articleFlex .article {
+        width: 90%;
+    }
+
+    .container .title {
+        font-size: 1.5rem;
+        padding: 20px 10px;
+    }
+
+    .container .paragraphe {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    .container .articleFlex .article .h2 {
+        font-size: 1.5em;
+    }
+}
