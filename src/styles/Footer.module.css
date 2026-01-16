@@ -1,5 +1,5 @@
 .footer {
-    padding: 30px;
+    padding: 20px;
     background-color: #333;
     color: white;
     .divArticle {
@@ -7,9 +7,8 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 40px;
         .article {
-            width: 100%;
             .title {
-                margin-bottom: 10px;
+                margin-bottom: 5px;
                 font-family: 'Amatic SC', sans-serif;
                 font-weight: 700;
                 font-size: 1.2rem;
@@ -24,7 +23,7 @@
         }
     }
     .divIcon {
-        margin: 20px 0 40px;
+        margin: 20px 0 20px;
         display: flex;
         flex-direction: row;
         gap: 10px;
@@ -32,7 +31,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
             border: 1px solid #333;
             border-radius: 30px;
             background-color: #444343;
@@ -50,6 +48,39 @@
             font-size: 0.6rem;
             color: #8e8d8d;
         }
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .footer .divArticle {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .footer .divIcon {
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 25px 20px;
+    }
+
+    .footer .divArticle {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer .divIcon {
+        justify-content: center;
+    }
+
+    .footer .divP {
+        padding-top: 15px;
     }
 }
 
