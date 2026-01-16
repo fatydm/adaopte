@@ -32,8 +32,8 @@
     }
 
     .formStyle {
-        padding: 30px;
-        line-height: 2;
+        padding: 20px;
+        line-height: 1.5;
 
         div {
             display: flex;
@@ -83,5 +83,53 @@
                 color: white;
             }
         } 
+    }
+}
+
+/* TABLETTE */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .formContainer .divForm {
+        margin-top: -50px; 
+        width: 85%;
+    }
+
+    .formContainer .formStyle div {
+        flex-direction: column;
+        gap: 1.5rem; 
+    }
+
+    .formContainer .formStyle textarea {
+        height: 130px; 
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .formContainer .divForm {
+        margin-top: -30px; 
+        width: 90%; 
+    }
+
+    .formContainer .formStyle div {
+        flex-direction: column;
+        gap: 1rem; 
+    }
+
+    .formContainer .formStyle textarea {
+        height: 120px; 
+    }
+
+    .formContainer .divForm .title {
+        /* font-size: 1.5rem; */
+        padding: 20px 10px;
+    }
+
+    .formContainer .divForm .paragraphe {
+        font-size: 0.9rem;
+    }
+
+    .formContainer .divButton .button {
+        /* width: 80%; */
+        /* padding: 10px; */
     }
 }
