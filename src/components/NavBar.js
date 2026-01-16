@@ -9,7 +9,7 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
 
     const handleLinkClick = () => {
-        setOpen(false); // ferme le menu burger
+        setOpen(false); 
     };
 
     return (
