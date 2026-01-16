@@ -44,25 +44,6 @@
         }
     }
 }
-/* .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 2rem 0;
-}
-
-.pagination button {
-    padding: 0.5rem 0.8rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background: white;
-    cursor: pointer;
-}
-
-.pagination button:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-} */
 
 .pagination {
     display: flex;
@@ -70,23 +51,23 @@
     align-items: center;
     gap: 5px;
     width: 100%;
-    max-width: 100vw; /* Empêche de dépasser la largeur de vue */
-    flex-wrap: wrap;    /* Si les boutons sont trop nombreux, ils passent à la ligne au lieu de pousser les murs */
+    max-width: 100vw;
+    flex-wrap: wrap;   
     padding: 10px;
-    box-sizing: border-box; /* Inclut le padding dans le calcul de la largeur */
-    overflow: hidden;   /* Sécurité supplémentaire */
+    box-sizing: border-box; 
+    overflow: hidden;  
 }
 
 .pagination button {
     padding: 0.2rem 0.45rem;
     font-size: 0.75rem;
     min-width: 28px;
-    height: 28px;       /* On fixe la hauteur pour éviter les sauts de ligne irréguliers */
+    height: 28px;     
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    touch-action: manipulation; /* Optimise le clic sur mobile */
+    touch-action: manipulation;
 }
 
 .activePage {
@@ -157,18 +138,7 @@
         font-size: 0.85rem;
     }
 
-    /* .pagination {
-        flex-direction: row;
-        gap: 0.25rem;
-    }
-
-    .pagination button {
-        padding: 0.2rem 0.45rem;
-        font-size: 0.75rem;
-        min-width: 28px;
-    } */
      .pagination button:nth-child(n+6):not(:last-child) {
-        /* Exemple : cache certains boutons si la liste est trop longue */
-        /* display: none; */
+
     }
 }
