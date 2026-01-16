@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useState, useEffect } from "react";
@@ -6,15 +5,14 @@ import data from "../data/data_animals.json";
 import AnimalCard from "@/components/AnimalCard";
 import styles from "../styles/Animal_card.module.css";
 
-const ITEMS_PER_PAGE = 8;
-
 export default function AnimalsGridContent() {
     const [type, setType] = useState("");
     const [ville, setVille] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [mounted, setMounted] = useState(false);
+    const [itemsPerPage, setItemsPerPage] = useState(8); // dynamique maintenant
 
-    // Lire les paramètres URL
+    // Lire les paramètres URL + mounted
     useEffect(() => {
         setMounted(true);
         const params = new URLSearchParams(window.location.search);
@@ -27,6 +25,24 @@ export default function AnimalsGridContent() {
         setCurrentPage(1);
     }, [type, ville]);
 
+    // 🔄 Ajuster itemsPerPage selon la taille de l'écran
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setItemsPerPage(4);
+            } else if (window.innerWidth <= 1024) {
+                setItemsPerPage(6); 
+            } else {
+                setItemsPerPage(8); 
+            }
+        };
+
+        handleResize(); // initialise au chargement
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const filteredData = data.filter((animal) => {
         const matchType =
             animal.type.toLowerCase() === type.toLowerCase() || type === "";
@@ -37,12 +53,12 @@ export default function AnimalsGridContent() {
         return matchType && matchVille;
     });
 
-    const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const startIndex = (currentPage - 1) * itemsPerPage;
     const paginatedData = filteredData.slice(
         startIndex,
-        startIndex + ITEMS_PER_PAGE
+        startIndex + itemsPerPage
     );
 
     if (!mounted) {

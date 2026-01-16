@@ -69,3 +69,71 @@
     color: white;
     border-color: #8b5e3c;
 }
+
+/* TABLETTE : 3 par ligne */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .containerGrid {
+        grid-template-columns: repeat(3, 1fr);
+        margin: 20px;
+        gap: 15px;
+    }
+
+    .containerGrid .animalCard {
+        margin: 10px;
+        height: auto;
+    }
+
+    .containerGrid .animalCard img {
+        height: 220px; 
+    }
+
+    .containerGrid .animalDivText {
+        padding: 10px;
+    }
+
+    .containerGrid .animalCardTitle {
+        font-size: 1.1rem;
+    }
+
+    .containerGrid .animalStylePara,
+    .containerGrid .animalCardDescription {
+        font-size: 0.9rem;
+    }
+}
+
+/* MOBILE : 2 par ligne */
+@media (max-width: 768px) {
+    .containerGrid {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 10px;
+        gap: 10px;
+        border: none;
+    }
+
+    .containerGrid .animalCard {
+        margin: 5px;
+        height: auto; /* s’adapte au contenu */
+    }
+
+    .containerGrid .animalCard img {
+        height: 180px; /* réduit encore la photo */
+    }
+
+    .containerGrid .animalDivText {
+        padding: 8px; /* plus compact */
+    }
+
+    .containerGrid .animalCardTitle {
+        font-size: 1rem;
+    }
+
+    .containerGrid .animalStylePara,
+    .containerGrid .animalCardDescription {
+        font-size: 0.85rem;
+    }
+
+    .pagination button {
+        padding: 0.15rem 0.6rem;
+        font-size: 0.9rem;
+    }
+}
